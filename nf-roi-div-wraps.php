@@ -7,6 +7,9 @@ Version: 1.0
 Author: WPN Zach
 Author URI: http://zachskaggs.com
 */
+define("NINJA_FORMS_ROI_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
+define("NINJA_FORMS_ROI_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
+
 function roi_calc_group_open_wrap( $field_id, $data ) {
   if( $data['class'] == 'data-open' ) {
     echo '<div class="data-fields-group">';
@@ -40,6 +43,6 @@ function roi_calc_group_close_wrap( $field_id, $data ) {
 add_action ( 'ninja_forms_display_after_field', 'roi_calc_group_close_wrap', 1, 2 );
 
 function ninja_forms_display_roi_css(){
-  wp_enqueue_style( 'ninja-forms-roi-display', getcwd() .'/css/ninja-forms-roi-display.css' );
+  wp_enqueue_style( 'ninja-forms-roi-display', WP_PLUGIN_DIR .'/css/ninja-forms-roi-display.css' );
   }
 add_action( 'ninja_forms_display_css', 'ninja_forms_display_roi_css', 10, 2 );
